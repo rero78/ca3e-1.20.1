@@ -1,0 +1,103 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:tin_sheet"
+  },
+  "transitionalItem": {
+    "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+  },
+  "results": [
+    {
+      "item": "ca3e:ultra_lightweight_mechanism",
+      "chance": 0.7
+    },
+    {
+      "item": "ca3e:tin_sheet",
+      "chance": 0.1
+    },
+    {
+      "item": "create:brass_nugget",
+      "chance": 0.05
+    },
+    {
+      "item": "thermal:iron_gear",
+      "chance": 0.05
+    },
+    {
+      "item": "minecraft:chain",
+      "chance": 0.05
+    },
+    {
+      "item": "create:belt_connector",
+      "chance": 0.05
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "create:shaft"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "create:cardboard"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "ca3e:tin_sheet"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "fluid": "thermal:latex",
+          "amount": 10
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    }
+  ],
+  "loops": 3
+}

@@ -1,0 +1,119 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createaddition:zinc_sheet"
+  },
+  "transitionalItem": {
+    "item": "ca3e:incomplete_industrial_mechanism"
+  },
+  "results": [
+    {
+      "item": "ca3e:industrial_mechanism",
+      "chance": 0.7
+    },
+    {
+      "item": "createaddition:zinc_sheet",
+      "chance": 0.1
+    },
+    {
+      "item": "create:brass_nugget",
+      "chance": 0.05
+    },
+    {
+      "item": "thermal:iron_gear",
+      "chance": 0.05
+    },
+    {
+      "item": "minecraft:chain",
+      "chance": 0.05
+    },
+    {
+      "item": "create:belt_connector",
+      "chance": 0.05
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        },
+        {
+          "item": "create:brass_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        },
+        {
+          "item": "thermal:iron_gear"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        },
+        {
+          "item": "minecraft:chain"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        },
+        {
+          "item": "create:belt_connector"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        },
+        {
+          "fluid": "createaddition:seed_oil",
+          "amount": 100
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_industrial_mechanism"
+        }
+      ]
+    }
+  ],
+  "loops": 3
+}

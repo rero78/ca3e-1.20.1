@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "kubejs:item/pneumatic_mechanism"
+    "layer0": "ca3e:item/pneumatic_mechanism"
   }
 }

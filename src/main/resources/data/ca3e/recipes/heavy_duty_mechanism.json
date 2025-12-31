@@ -1,0 +1,124 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:netherite_sheet"
+  },
+  "transitionalItem": {
+    "item": "ca3e:incomplete_heavy_duty_mechanism"
+  },
+  "results": [
+    {
+      "item": "ca3e:heavy_duty_mechanism",
+      "chance": 0.8
+    },
+    {
+      "item": "ca3e:netherite_sheet",
+      "chance": 0.1
+    },
+    {
+      "item": "tconstruct:hepatizon_nugget",
+      "chance": 0.05
+    },
+    {
+      "item": "minecraft:chain",
+      "chance": 0.05
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        },
+        {
+          "item": "thermal:steel_gear"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        },
+        {
+          "item": "minecraft:chain"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        },
+        {
+          "item": "thermal:steel_gear"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        },
+        {
+          "item": "tconstruct:hepatizon_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        },
+        {
+          "fluid": "thermal:light_oil",
+          "amount": 20
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_heavy_duty_mechanism"
+        }
+      ]
+    }
+  ],
+  "loops": 3
+}

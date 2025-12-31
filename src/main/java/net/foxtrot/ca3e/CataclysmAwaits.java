@@ -41,10 +41,45 @@ public class CataclysmAwaits
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+
+            // Mechanisms
             event.accept(ModItems.ANDESITE_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_ANDESITE_MECHANISM);
+            event.accept(ModItems.PREPARED_ANDESITE_MECHANISM);
+
+            event.accept(ModItems.PNEUMATIC_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_PNEUMATIC_MECHANISM);
+
+            event.accept(ModItems.STERILE_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_STERILE_MECHANISM);
+
+            event.accept(ModItems.INDUSTRIAL_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_INDUSTRIAL_MECHANISM);
+
+            event.accept(ModItems.COMPUTATION_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_COMPUTATION_MECHANISM);
+
+            event.accept(ModItems.ADVANCED_COMPUTATION_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_ADVANCED_COMPUTATION_MECHANISM);
+
+            event.accept(ModItems.ULTRA_LIGHTWEIGHT_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_ULTRA_LIGHTWEIGHT_MECHANISM);
+
+            event.accept(ModItems.HEAVY_DUTY_MECHANISM);
+            event.accept(ModItems.INCOMPLETE_HEAVY_DUTY_MECHANISM);
+
+            // Sheets
+            event.accept(ModItems.ANDESITE_SHEET);
+            event.accept(ModItems.SILVER_SHEET);
+            event.accept(ModItems.INVAR_SHEET);
+            event.accept(ModItems.SIGNALUM_SHEET);
+            event.accept(ModItems.ZINC_SHEET);
+            event.accept(ModItems.ALUMINUM_SHEET);
+            event.accept(ModItems.NETHERITE_SHEET);
         }
     }
+
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
