@@ -1,0 +1,95 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:silver_sheet"
+  },
+  "loops": 4,
+  "results": [
+    {
+      "chance": 0.7,
+      "item": "ca3e:sterile_mechanism"
+    },
+    {
+      "chance": 0.1,
+      "item": "ca3e:silver_sheet"
+    },
+    {
+      "chance": 0.1,
+      "item": "thermal:silver_gear"
+    },
+    {
+      "chance": 0.1,
+      "item": "thermal:silver_coin"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        },
+        {
+          "item": "thermal:silver_coin"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        },
+        {
+          "item": "thermal:silver_gear"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        },
+        {
+          "item": "minecraft:gold_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        },
+        {
+          "amount": 250,
+          "fluid": "minecraft:water"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_sterile_mechanism"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "ca3e:incomplete_sterile_mechanism"
+  }
+}

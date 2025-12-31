@@ -165,7 +165,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static void sequencedAssembly(Consumer<FinishedRecipe> writer, String name, JsonObject ingredient, JsonObject transitionalItem,
                                           List<ResultEntry> results, List<AssemblyStep> steps, int loops) {
-        writer.accept(new SequencedAssemblyRecipe(new ResourceLocation(CataclysmAwaits.MOD_ID, name), ingredient, transitionalItem, results, steps, loops));
+        writer.accept(new SequencedAssemblyRecipe(ResourceLocation.tryBuild(CataclysmAwaits.MOD_ID, name), ingredient, transitionalItem, results, steps, loops));
     }
 
     private static JsonObject item(String itemId) {
@@ -210,7 +210,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static class SequencedAssemblyRecipe implements FinishedRecipe {
 
-        private static final ResourceLocation SEQUENCED_ASSEMBLY = new ResourceLocation("create", "sequenced_assembly");
+        private static final ResourceLocation SEQUENCED_ASSEMBLY = ResourceLocation.tryBuild("create", "sequenced_assembly");
         private final ResourceLocation id;
         private final JsonObject ingredient;
         private final JsonObject transitionalItem;

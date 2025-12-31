@@ -1,0 +1,103 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:tin_sheet"
+  },
+  "loops": 3,
+  "results": [
+    {
+      "chance": 0.7,
+      "item": "ca3e:ultra_lightweight_mechanism"
+    },
+    {
+      "chance": 0.1,
+      "item": "ca3e:tin_sheet"
+    },
+    {
+      "chance": 0.05,
+      "item": "create:brass_nugget"
+    },
+    {
+      "chance": 0.05,
+      "item": "thermal:iron_gear"
+    },
+    {
+      "chance": 0.05,
+      "item": "minecraft:chain"
+    },
+    {
+      "chance": 0.05,
+      "item": "create:belt_connector"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "create:shaft"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "create:cardboard"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "item": "ca3e:tin_sheet"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        },
+        {
+          "amount": 10,
+          "fluid": "thermal:latex"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "ca3e:incomplete_ultra_lightweight_mechanism"
+  }
+}

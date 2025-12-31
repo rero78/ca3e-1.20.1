@@ -22,7 +22,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(CataclysmAwaits.MOD_ID,"item/" + item.getId().getPath()));
+                ResourceLocation.tryParse("item/generated")).texture("layer0",
+                ResourceLocation.tryBuild(CataclysmAwaits.MOD_ID, "item/" + item.getId().getPath()));
     }
 }

@@ -1,0 +1,114 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:invar_sheet"
+  },
+  "loops": 3,
+  "results": [
+    {
+      "chance": 0.85,
+      "item": "ca3e:computation_mechanism"
+    },
+    {
+      "chance": 0.04,
+      "item": "ca3e:invar_sheet"
+    },
+    {
+      "chance": 0.03,
+      "item": "morered:red_alloy_wire"
+    },
+    {
+      "chance": 0.03,
+      "item": "thermal:rf_coil"
+    },
+    {
+      "chance": 0.05,
+      "item": "create:transmitter"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        },
+        {
+          "item": "morered:red_alloy_wire"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        },
+        {
+          "item": "create:transmitter"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        },
+        {
+          "item": "thermal:rf_coil"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        },
+        {
+          "item": "thermal:gold_coin"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        },
+        {
+          "item": "morered:red_alloy_wire"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_computation_mechanism"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "ca3e:incomplete_computation_mechanism"
+  }
+}

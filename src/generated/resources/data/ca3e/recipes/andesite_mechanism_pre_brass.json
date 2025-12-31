@@ -1,0 +1,56 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "ca3e:prepared_andesite_mechanism"
+  },
+  "loops": 4,
+  "results": [
+    {
+      "chance": 0.3,
+      "item": "ca3e:andesite_mechanism"
+    },
+    {
+      "chance": 0.5,
+      "item": "ca3e:prepared_andesite_mechanism"
+    },
+    {
+      "chance": 0.1,
+      "item": "thermal:copper_gear"
+    },
+    {
+      "chance": 0.1,
+      "item": "thermal:copper_coin"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_andesite_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_andesite_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "ca3e:incomplete_andesite_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "item": "ca3e:incomplete_andesite_mechanism"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "ca3e:incomplete_andesite_mechanism"
+  }
+}
