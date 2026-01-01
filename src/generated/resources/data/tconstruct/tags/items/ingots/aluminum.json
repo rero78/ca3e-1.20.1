@@ -1,6 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "#forge:ingots/aluminum"
+    "ca3e:aluminum_ingot"
   ]
 }

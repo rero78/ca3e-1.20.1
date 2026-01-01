@@ -1,6 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "#forge:raw_materials/aluminum"
+    "ca3e:raw_bauxite"
   ]
 }

@@ -31,11 +31,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
                 );
 
-        this.tag(Tags.Blocks.ORES_ALUMINUM)
-                .add(ModBlocks.BAUXITE_ORE.get(),
-                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
-                );
-
         this.tag(ModTags.Blocks.TCONSTRUCT_ORES_ALUMINUM)
                 .add(ModBlocks.BAUXITE_ORE.get(),
                         ModBlocks.DEEPSLATE_BAUXITE_ORE.get()

@@ -1,1 +1,6 @@
-// 1.20.1	2025-12-31T15:23:39.7905729	Tags for minecraft:item mod id ca3e
+// 1.20.1	2025-12-31T18:51:17.6611905	Tags for minecraft:item mod id ca3e
+42a110cea894115092ffd9b964d97808f88088b3 data/forge/tags/items/plates/aluminum.json
+901e06ca281f87c3ab3447a2f01147aeca1570e5 data/tconstruct/tags/items/ingots/aluminum.json
+3e4277fb8f94d7d4273fd3353f85d185af3174e2 data/tconstruct/tags/items/ores/aluminum.json
+42a110cea894115092ffd9b964d97808f88088b3 data/tconstruct/tags/items/plates/aluminum.json
+9d0042d2697d89397629b1a35df194016b78c586 data/tconstruct/tags/items/raw_materials/aluminum.json

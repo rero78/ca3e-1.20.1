@@ -22,18 +22,13 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        this.tag(Tags.Items.INGOTS_ALUMINUM).add(ModItems.ALUMINUM_INGOT.get());
         this.tag(ModTags.Items.TCONSTRUCT_INGOTS_ALUMINUM).add(ModItems.ALUMINUM_INGOT.get());
 
-        this.tag(Tags.Items.RAW_MATERIALS_ALUMINUM).add(ModItems.RAW_BAUXITE.get());
         this.tag(ModTags.Items.TCONSTRUCT_RAW_MATERIALS_ALUMINUM).add(ModItems.RAW_BAUXITE.get());
 
         this.tag(ModTags.Items.FORGE_PLATES_ALUMINUM).add(ModItems.ALUMINUM_SHEET.get());
         this.tag(ModTags.Items.TCONSTRUCT_PLATES_ALUMINUM).add(ModItems.ALUMINUM_SHEET.get());
 
-        this.tag(Tags.Items.ORES_ALUMINUM)
-                .add(ModBlocks.BAUXITE_ORE.get().asItem(),
-                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get().asItem());
         this.tag(ModTags.Items.TCONSTRUCT_ORES_ALUMINUM)
                 .add(ModBlocks.BAUXITE_ORE.get().asItem(),
                         ModBlocks.DEEPSLATE_BAUXITE_ORE.get().asItem());
