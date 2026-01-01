@@ -25,10 +25,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        this.add(ModBlocks.BAUXITE_ORE.get(),
+                block -> oreDrops(ModBlocks.BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get()));
 
+        this.add(ModBlocks.DEEPSLATE_BAUXITE_ORE.get(),
+                block -> betterOreDrops(ModBlocks.DEEPSLATE_BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get()));
     }
 
-    protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {
+    protected LootTable.Builder oreDrops(Block pBlock, Item item) {
+        return createSilkTouchDispatchTable(pBlock,
+                this.applyExplosionDecay(pBlock,
+                        LootItem.lootTableItem(item)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+    }
+
+    protected LootTable.Builder betterOreDrops(Block pBlock, Item item) {
         return createSilkTouchDispatchTable(pBlock,
                 this.applyExplosionDecay(pBlock,
                         LootItem.lootTableItem(item)

@@ -3,6 +3,7 @@ package net.foxtrot.ca3e.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.foxtrot.ca3e.CataclysmAwaits;
+import net.foxtrot.ca3e.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -55,13 +56,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 item("ca3e:incomplete_pneumatic_mechanism"),
                 List.of(
                         new ResultEntry("ca3e:pneumatic_mechanism", 0.85),
-                        new ResultEntry("create_aquatic_ambitions:prismarine_alloy_rod", 0.05),
-                        new ResultEntry("create_aquatic_ambitions:prismarine_alloy", 0.05),
-                        new ResultEntry("create:copper_sheet", 0.05)
+                        new ResultEntry("create:mechanical_pump", 0.15)
                 ),
                 List.of(
-                        step("create:deploying", List.of(item("ca3e:incomplete_pneumatic_mechanism"), item("create_aquatic_ambitions:prismarine_alloy")), "ca3e:incomplete_pneumatic_mechanism"),
-                        step("create:deploying", List.of(item("ca3e:incomplete_pneumatic_mechanism"), item("create_aquatic_ambitions:prismarine_alloy_rod")), "ca3e:incomplete_pneumatic_mechanism")
+                        step("create:deploying", List.of(item("ca3e:incomplete_pneumatic_mechanism"), item("create:mechanical_pump")), "ca3e:incomplete_pneumatic_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_pneumatic_mechanism"), item("create:cogwheel")), "ca3e:incomplete_pneumatic_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_pneumatic_mechanism"), item("minecraft:glass_bottle")), "ca3e:incomplete_pneumatic_mechanism"),
+                        step("create:filling", List.of(item("ca3e:incomplete_pneumatic_mechanism"), fluid("minecraft:water", 100)), "ca3e:incomplete_pneumatic_mechanism")
                 ), 3);
 
         sequencedAssembly(pWriter, "industrial_mechanism", item("createaddition:zinc_sheet"),
@@ -87,16 +88,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 List.of(
                         new ResultEntry("ca3e:computation_mechanism", 0.85),
                         new ResultEntry("ca3e:invar_sheet", 0.04),
-                        new ResultEntry("morered:red_alloy_wire", 0.03),
+                        new ResultEntry("createaddition:copper_wire", 0.03),
                         new ResultEntry("thermal:rf_coil", 0.03),
                         new ResultEntry("create:transmitter", 0.05)
                 ),
                 List.of(
-                        step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("morered:red_alloy_wire")), "ca3e:incomplete_computation_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("createaddition:copper_wire")), "ca3e:incomplete_computation_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("create:transmitter")), "ca3e:incomplete_computation_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("thermal:rf_coil")), "ca3e:incomplete_computation_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("thermal:gold_coin")), "ca3e:incomplete_computation_mechanism"),
-                        step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("morered:red_alloy_wire")), "ca3e:incomplete_computation_mechanism")
+                        step("create:deploying", List.of(item("ca3e:incomplete_computation_mechanism"), item("createaddition:copper_wire")), "ca3e:incomplete_computation_mechanism")
                 ), 3);
 
         sequencedAssembly(pWriter, "advanced_computation_mechanism", item("ca3e:signalum_sheet"),
@@ -133,34 +134,43 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 List.of(
                         new ResultEntry("ca3e:heavy_duty_mechanism", 0.8),
                         new ResultEntry("ca3e:netherite_sheet", 0.1),
-                        new ResultEntry("tconstruct:hepatizon_nugget", 0.05),
+                        new ResultEntry("create:sturdy_sheet", 0.05),
                         new ResultEntry("minecraft:chain", 0.05)
                 ),
                 List.of(
                         step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:steel_gear")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("minecraft:chain")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:steel_gear")), "ca3e:incomplete_heavy_duty_mechanism"),
-                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("tconstruct:hepatizon_nugget")), "ca3e:incomplete_heavy_duty_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("create:sturdy_sheet")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:pressing", List.of(item("ca3e:incomplete_heavy_duty_mechanism")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:filling", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), fluid("thermal:light_oil", 20)), "ca3e:incomplete_heavy_duty_mechanism")
                 ), 3);
 
-        sequencedAssembly(pWriter, "ultra_lightweight_mechanism", item("ca3e:tin_sheet"),
+        sequencedAssembly(pWriter, "ultra_lightweight_mechanism", item("ca3e:aluminum_sheet"),
                 item("ca3e:incomplete_ultra_lightweight_mechanism"),
                 List.of(
                         new ResultEntry("ca3e:ultra_lightweight_mechanism", 0.7),
-                        new ResultEntry("ca3e:tin_sheet", 0.1),
-                        new ResultEntry("create:brass_nugget", 0.05),
-                        new ResultEntry("thermal:iron_gear", 0.05),
-                        new ResultEntry("minecraft:chain", 0.05),
-                        new ResultEntry("create:belt_connector", 0.05)
+                        new ResultEntry("ca3e:aluminum_sheet", 0.1),
+                        new ResultEntry("thermal:iron_gear", 0.05)
                 ),
                 List.of(
                         step("create:deploying", List.of(item("ca3e:incomplete_ultra_lightweight_mechanism"), item("create:shaft")), "ca3e:incomplete_ultra_lightweight_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_ultra_lightweight_mechanism"), item("create:cardboard")), "ca3e:incomplete_ultra_lightweight_mechanism"),
-                        step("create:deploying", List.of(item("ca3e:incomplete_ultra_lightweight_mechanism"), item("ca3e:tin_sheet")), "ca3e:incomplete_ultra_lightweight_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_ultra_lightweight_mechanism"), item("ca3e:aluminum_sheet")), "ca3e:incomplete_ultra_lightweight_mechanism"),
                         step("create:filling", List.of(item("ca3e:incomplete_ultra_lightweight_mechanism"), fluid("thermal:latex", 10)), "ca3e:incomplete_ultra_lightweight_mechanism")
                 ), 3);
+
+
+        createPressing(pWriter, "andesite_sheet_pressing", item("create:andesite_alloy"), "ca3e:andesite_sheet", 1);
+        createPressing(pWriter, "silver_sheet_pressing", item("thermal:silver_ingot"), "ca3e:silver_sheet", 1);
+        createPressing(pWriter, "invar_sheet_pressing", item("thermal:invar_ingot"), "ca3e:invar_sheet", 1);
+        createPressing(pWriter, "signalum_sheet_pressing", item("thermal:signalum_ingot"), "ca3e:signalum_sheet", 1);
+        createPressing(pWriter, "netherite_sheet_pressing", item("minecraft:netherite_ingot"), "ca3e:netherite_sheet", 1);
+        createPressing(pWriter, "aluminum_sheet_pressing", item("ca3e:aluminum_ingot"), "ca3e:aluminum_sheet", 1);
+
+        oreSmelting(pWriter, List.<ItemLike>of(ModItems.RAW_BAUXITE.get()), RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(), 0.7f, 200, "aluminum_ingot");
+
+
     }
 
     private static void sequencedAssembly(Consumer<FinishedRecipe> writer, String name, JsonObject ingredient, JsonObject transitionalItem,
@@ -281,4 +291,69 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             return null;
         }
     }
+
+
+
+    private static void createPressing(Consumer<FinishedRecipe> writer, String name, JsonObject ingredient, String resultItemId, int count) {
+        writer.accept(new CreatePressingRecipe(
+                ResourceLocation.tryBuild(CataclysmAwaits.MOD_ID, name),
+                ingredient,
+                item(resultItemId),
+                count
+        ));
+    }
+
+    private static class CreatePressingRecipe implements FinishedRecipe {
+
+        private static final ResourceLocation PRESSING = ResourceLocation.tryBuild("create", "pressing");
+        private final ResourceLocation id;
+        private final JsonObject ingredient;
+        private final JsonObject result;
+        private final int count;
+
+        private CreatePressingRecipe(ResourceLocation id, JsonObject ingredient, JsonObject result, int count) {
+            this.id = id;
+            this.ingredient = ingredient;
+            this.result = result;
+            this.count = count;
+        }
+
+        @Override
+        public void serializeRecipeData(JsonObject json) {
+            JsonArray ingredients = new JsonArray();
+            ingredients.add(ingredient);
+            json.add("ingredients", ingredients);
+
+            JsonArray results = new JsonArray();
+            JsonObject out = new JsonObject();
+            out.addProperty("item", result.get("item").getAsString());
+            if (count != 1) out.addProperty("count", count);
+            results.add(out);
+            json.add("results", results);
+        }
+
+        @Override
+        public ResourceLocation getId() {
+            return id;
+        }
+
+        @Override
+        public RecipeSerializer<?> getType() {
+            return Objects.requireNonNull(
+                    ForgeRegistries.RECIPE_SERIALIZERS.getValue(PRESSING),
+                    "Create pressing serializer is not registered"
+            );
+        }
+
+        @Override
+        public @Nullable JsonObject serializeAdvancement() {
+            return null;
+        }
+
+        @Override
+        public @Nullable ResourceLocation getAdvancementId() {
+            return null;
+        }
+    }
+
 }

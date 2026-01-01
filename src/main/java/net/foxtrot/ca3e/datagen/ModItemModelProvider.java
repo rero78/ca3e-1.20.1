@@ -28,7 +28,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SILVER_SHEET);
         simpleItem(ModItems.INDUSTRIAL_MECHANISM);
         simpleItem(ModItems.INCOMPLETE_INDUSTRIAL_MECHANISM);
-        simpleItem(ModItems.ZINC_SHEET);
         simpleItem(ModItems.COMPUTATION_MECHANISM);
         simpleItem(ModItems.INCOMPLETE_COMPUTATION_MECHANISM);
         simpleItem(ModItems.INVAR_SHEET);
@@ -37,10 +36,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SIGNALUM_SHEET);
         simpleItem(ModItems.ULTRA_LIGHTWEIGHT_MECHANISM);
         simpleItem(ModItems.INCOMPLETE_ULTRA_LIGHTWEIGHT_MECHANISM);
-        simpleItem(ModItems.ALUMINUM_SHEET);
         simpleItem(ModItems.HEAVY_DUTY_MECHANISM);
         simpleItem(ModItems.INCOMPLETE_HEAVY_DUTY_MECHANISM);
         simpleItem(ModItems.NETHERITE_SHEET);
+        simpleItem(ModItems.RAW_BAUXITE);
+        simpleItem(ModItems.ALUMINUM_SHEET);
+        simpleItem(ModItems.ALUMINUM_INGOT);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

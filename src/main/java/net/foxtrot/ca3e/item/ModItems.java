@@ -22,7 +22,6 @@ public class ModItems {
     public static final RegistryObject<Item> SILVER_SHEET = ITEMS.register("silver_sheet", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INDUSTRIAL_MECHANISM = ITEMS.register("industrial_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INCOMPLETE_INDUSTRIAL_MECHANISM = ITEMS.register("incomplete_industrial_mechanism", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ZINC_SHEET = ITEMS.register("zinc_sheet", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COMPUTATION_MECHANISM = ITEMS.register("computation_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INCOMPLETE_COMPUTATION_MECHANISM = ITEMS.register("incomplete_computation_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INVAR_SHEET = ITEMS.register("invar_sheet", () -> new Item(new Item.Properties()));
@@ -32,6 +31,8 @@ public class ModItems {
     public static final RegistryObject<Item> ULTRA_LIGHTWEIGHT_MECHANISM = ITEMS.register("ultra_lightweight_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INCOMPLETE_ULTRA_LIGHTWEIGHT_MECHANISM = ITEMS.register("incomplete_ultra_lightweight_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ALUMINUM_SHEET = ITEMS.register("aluminum_sheet", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_BAUXITE = ITEMS.register("raw_bauxite", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_DUTY_MECHANISM = ITEMS.register("heavy_duty_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INCOMPLETE_HEAVY_DUTY_MECHANISM = ITEMS.register("incomplete_heavy_duty_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> NETHERITE_SHEET = ITEMS.register("netherite_sheet", () -> new Item(new Item.Properties()));

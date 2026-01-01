@@ -1,6 +1,7 @@
 package net.foxtrot.ca3e;
 
 import com.mojang.logging.LogUtils;
+import net.foxtrot.ca3e.block.ModBlocks;
 import net.foxtrot.ca3e.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -28,6 +29,8 @@ public class CataclysmAwaits
         IEventBus modEventBus = context.getModEventBus();
 
         ModItems.register(modEventBus);
+
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -74,9 +77,16 @@ public class CataclysmAwaits
             event.accept(ModItems.SILVER_SHEET);
             event.accept(ModItems.INVAR_SHEET);
             event.accept(ModItems.SIGNALUM_SHEET);
-            event.accept(ModItems.ZINC_SHEET);
-            event.accept(ModItems.ALUMINUM_SHEET);
             event.accept(ModItems.NETHERITE_SHEET);
+
+            // ALUMINUM
+
+            event.accept(ModItems.ALUMINUM_INGOT);
+            event.accept(ModItems.ALUMINUM_SHEET);
+            event.accept(ModItems.RAW_BAUXITE);
+            event.accept(ModBlocks.BAUXITE_ORE);
+            event.accept(ModBlocks.DEEPSLATE_BAUXITE_ORE);
+
         }
     }
 

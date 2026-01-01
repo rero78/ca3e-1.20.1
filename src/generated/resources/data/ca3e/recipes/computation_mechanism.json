@@ -15,7 +15,7 @@
     },
     {
       "chance": 0.03,
-      "item": "morered:red_alloy_wire"
+      "item": "createaddition:copper_wire"
     },
     {
       "chance": 0.03,
@@ -34,7 +34,7 @@
           "item": "ca3e:incomplete_computation_mechanism"
         },
         {
-          "item": "morered:red_alloy_wire"
+          "item": "createaddition:copper_wire"
         }
       ],
       "results": [
@@ -98,7 +98,7 @@
           "item": "ca3e:incomplete_computation_mechanism"
         },
         {
-          "item": "morered:red_alloy_wire"
+          "item": "createaddition:copper_wire"
         }
       ],
       "results": [

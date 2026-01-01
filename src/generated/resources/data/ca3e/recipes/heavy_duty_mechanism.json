@@ -15,7 +15,7 @@
     },
     {
       "chance": 0.05,
-      "item": "tconstruct:hepatizon_nugget"
+      "item": "create:sturdy_sheet"
     },
     {
       "chance": 0.05,
@@ -78,7 +78,7 @@
           "item": "ca3e:incomplete_heavy_duty_mechanism"
         },
         {
-          "item": "tconstruct:hepatizon_nugget"
+          "item": "create:sturdy_sheet"
         }
       ],
       "results": [

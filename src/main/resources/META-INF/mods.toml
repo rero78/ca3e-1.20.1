@@ -32,13 +32,13 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="cofh_core"
     mandatory=true
-    versionRange="[11.0.0,12.0.0)"  # matches 11.x line for 1.20.1
+    versionRange="[11.0.0,12.0.0)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="thermal"
-    mandatory=true          # set to false if you want Thermal to be optional
+    mandatory=true
     versionRange="[11.0.0,12.0.0)"
     ordering="AFTER"
     side="BOTH"
@@ -49,3 +49,10 @@ description='''${mod_description}'''
     versionRange="[15,)"
     ordering="AFTER"
     side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="createaddition"
+    mandatory=true
+    versionRange="[1.2.0,)"
+    ordering="AFTER"
+    side="BOTH"

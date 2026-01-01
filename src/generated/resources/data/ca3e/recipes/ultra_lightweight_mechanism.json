@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "ca3e:tin_sheet"
+    "item": "ca3e:aluminum_sheet"
   },
   "loops": 3,
   "results": [
@@ -11,23 +11,11 @@
     },
     {
       "chance": 0.1,
-      "item": "ca3e:tin_sheet"
-    },
-    {
-      "chance": 0.05,
-      "item": "create:brass_nugget"
+      "item": "ca3e:aluminum_sheet"
     },
     {
       "chance": 0.05,
       "item": "thermal:iron_gear"
-    },
-    {
-      "chance": 0.05,
-      "item": "minecraft:chain"
-    },
-    {
-      "chance": 0.05,
-      "item": "create:belt_connector"
     }
   ],
   "sequence": [
@@ -70,7 +58,7 @@
           "item": "ca3e:incomplete_ultra_lightweight_mechanism"
         },
         {
-          "item": "ca3e:tin_sheet"
+          "item": "ca3e:aluminum_sheet"
         }
       ],
       "results": [
