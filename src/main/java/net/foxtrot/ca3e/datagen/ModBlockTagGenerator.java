@@ -1,7 +1,6 @@
 package net.foxtrot.ca3e.datagen;
 
 import net.foxtrot.ca3e.CataclysmAwaits;
-import net.foxtrot.ca3e.CataclysmAwaits;
 import net.foxtrot.ca3e.block.ModBlocks;
 import net.foxtrot.ca3e.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -28,6 +27,16 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 );
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.BAUXITE_ORE.get(),
+                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
+                );
+
+        this.tag(Tags.Blocks.ORES_ALUMINUM)
+                .add(ModBlocks.BAUXITE_ORE.get(),
+                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
+                );
+
+        this.tag(ModTags.Blocks.TCONSTRUCT_ORES_ALUMINUM)
                 .add(ModBlocks.BAUXITE_ORE.get(),
                         ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
                 );
