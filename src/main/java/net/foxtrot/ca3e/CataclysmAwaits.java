@@ -2,7 +2,10 @@ package net.foxtrot.ca3e;
 
 import com.mojang.logging.LogUtils;
 import net.foxtrot.ca3e.block.ModBlocks;
+import net.foxtrot.ca3e.entity.ModEntities;
+import net.foxtrot.ca3e.entity.client.MushletRenderer;
 import net.foxtrot.ca3e.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -31,6 +34,9 @@ public class CataclysmAwaits
         ModItems.register(modEventBus);
 
         ModBlocks.register(modEventBus);
+
+        // ModSounds.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -104,7 +110,7 @@ public class CataclysmAwaits
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.MUSHLET.get(), MushletRenderer::new);
         }
     }
 }
