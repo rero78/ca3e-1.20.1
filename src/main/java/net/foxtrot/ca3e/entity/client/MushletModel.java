@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.foxtrot.ca3e.entity.animations.ModAnimationDefinitions;
 import net.foxtrot.ca3e.entity.custom.MushletEntity;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -12,11 +13,10 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.client.model.geom.builders.*;
-import static net.minecraft.client.animation.KeyframeAnimations.animate;
+import net.minecraft.client.animation.KeyframeAnimations.*;
 
 
-public class MushletModel<T extends Entity> extends EntityModel<T> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
+public class MushletModel<T extends Entity> extends HierarchicalModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "mushlet"), "main");
 	private final ModelPart mushlet;
 
@@ -47,9 +47,8 @@ public class MushletModel<T extends Entity> extends EntityModel<T> {
 	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 
-		this.animateWalk(ModAnimationDefinitions.mushletAnimation.MUSHLET_WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animateWalk(ModAnimationDefinitions.MUSHLET_WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(((MushletEntity) entity).idleAnimationState, ModAnimationDefinitions.MUSHLET_IDLE, ageInTicks, 1f);
-
 	}
 
 	@Override

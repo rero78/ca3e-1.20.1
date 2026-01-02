@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "ca3e:aluminum_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "ca3e:aluminum_sheet"
+    }
+  ]
+}

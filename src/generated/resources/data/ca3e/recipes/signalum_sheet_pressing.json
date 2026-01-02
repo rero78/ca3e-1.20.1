@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "thermal:signalum_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "ca3e:signalum_sheet"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "thermal:silver_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "ca3e:silver_sheet"
+    }
+  ]
+}

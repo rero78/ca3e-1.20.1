@@ -1,0 +1,4 @@
+// 1.20.1	2026-01-01T12:52:37.6019251	Registries
+ab7b4fd18e172095b5cf1d2d121f679a205dd312 data/ca3e/forge/biome_modifier/add_bauxite_ore.json
+31939752aab904203e52606126c38fe92b770f1e data/ca3e/worldgen/configured_feature/bauxite_ore.json
+89e1b2b0433e733c84c8fad7d60f735902c662c5 data/ca3e/worldgen/placed_feature/bauxite_ore_placed.json
