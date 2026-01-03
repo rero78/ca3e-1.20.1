@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-31T18:24:45.9529712	Recipes
+// 1.20.1	2026-01-01T19:37:08.9563192	Recipes
 dbfbcffb3059592d61a8d7040a78a5d9f16dc459 data/ca3e/advancements/recipes/misc/aluminum_ingot_from_smelting_raw_bauxite.json
 57a7cee78315fad2d054170452b87e285062f4f1 data/ca3e/recipes/advanced_computation_mechanism.json
 cb06f25030c6c3d6297bc8f3562e1144ccb932d2 data/ca3e/recipes/aluminum_ingot_from_smelting_raw_bauxite.json
@@ -7,7 +7,7 @@ e081423dcfbfe4013f72e155d705d18df9e95e1c data/ca3e/recipes/andesite_mechanism_po
 249389eb56246e3c826f1e1bf72a0c7f28013190 data/ca3e/recipes/andesite_mechanism_pre_brass.json
 4b3b992933077d1c882dfca11390df00f63df1e5 data/ca3e/recipes/andesite_sheet_pressing.json
 3c38615268f4f6f508cd182efbe6e5923ccbd744 data/ca3e/recipes/computation_mechanism.json
-3335c34aef7d7ee7f2069e0480016df62cd31aa9 data/ca3e/recipes/heavy_duty_mechanism.json
+98aabe70eaf9917855a490fec7cc6d21a865bb2b data/ca3e/recipes/heavy_duty_mechanism.json
 e93870935f98a1f962ab54f447f0a03b4e6fd037 data/ca3e/recipes/industrial_mechanism.json
 ec9b97bf219789df6e848c80a93ad7af995c631b data/ca3e/recipes/invar_sheet_pressing.json
 dd7fc321326c04a8ccf309bc382eb0126f87ffc0 data/ca3e/recipes/netherite_sheet_pressing.json

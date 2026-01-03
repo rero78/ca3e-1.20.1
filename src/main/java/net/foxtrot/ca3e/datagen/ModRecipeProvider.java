@@ -138,9 +138,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         new ResultEntry("minecraft:chain", 0.05)
                 ),
                 List.of(
-                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:steel_gear")), "ca3e:incomplete_heavy_duty_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:netherite_coin")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("minecraft:chain")), "ca3e:incomplete_heavy_duty_mechanism"),
-                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:steel_gear")), "ca3e:incomplete_heavy_duty_mechanism"),
+                        step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("thermal:netherite_coin")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:deploying", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), item("create:sturdy_sheet")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:pressing", List.of(item("ca3e:incomplete_heavy_duty_mechanism")), "ca3e:incomplete_heavy_duty_mechanism"),
                         step("create:filling", List.of(item("ca3e:incomplete_heavy_duty_mechanism"), fluid("thermal:light_oil", 20)), "ca3e:incomplete_heavy_duty_mechanism")
