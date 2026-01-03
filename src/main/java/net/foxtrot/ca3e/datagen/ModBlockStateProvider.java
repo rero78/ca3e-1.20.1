@@ -17,6 +17,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.BAUXITE_ORE);
         blockWithItem(ModBlocks.DEEPSLATE_BAUXITE_ORE);
+        blockWithItem(ModBlocks.MINING_DOOHICKEY);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

@@ -1,7 +1,10 @@
-// 1.20.1	2025-12-31T18:05:42.9658318	Block States: ca3e
+// 1.20.1	2026-01-03T16:18:25.544042	Block States: ca3e
 1f579ea0b24f9dab061f64829511afb7cdd60b3e assets/ca3e/blockstates/bauxite_ore.json
 a844d2fab37cd96be4e28ab0eaaee6d8e48b9916 assets/ca3e/blockstates/deepslate_bauxite_ore.json
+001dfea7df536b6ad11623a7fcf3c75589e572fb assets/ca3e/blockstates/mining_doohickey.json
 0faabceb15cd00052ada03649af64b2eb2122b1e assets/ca3e/models/block/bauxite_ore.json
 699657bd55e9d58a258e5427661a2d68c4d9abbf assets/ca3e/models/block/deepslate_bauxite_ore.json
+01decee03d8e72a3016f463a3cd1d05fb11572cc assets/ca3e/models/block/mining_doohickey.json
 b32435fcfe2e21619c28f60ef92b3cc9ca44e66e assets/ca3e/models/item/bauxite_ore.json
 f79ae1d98bd2cddfc01b234607869a895b7b7418 assets/ca3e/models/item/deepslate_bauxite_ore.json
+36c0ea525d2f83efd3689584a28fc2e1d0e7a236 assets/ca3e/models/item/mining_doohickey.json

@@ -23,7 +23,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.BAUXITE_ORE.get(),
-                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get()
+                        ModBlocks.DEEPSLATE_BAUXITE_ORE.get(),
+                        ModBlocks.MINING_DOOHICKEY.get()
                 );
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)

@@ -42,11 +42,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.RAW_BAUXITE);
         simpleItem(ModItems.ALUMINUM_SHEET);
         simpleItem(ModItems.ALUMINUM_INGOT);
+        blockItem(ModItems.MINING_DOOHICKEY, "block/mining_doohickey");
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.tryParse("item/generated")).texture("layer0",
                 ResourceLocation.tryBuild(CataclysmAwaits.MOD_ID, "item/" + item.getId().getPath()));
+    }
+    private ItemModelBuilder blockItem(RegistryObject<Item> item, String blockTexturePath) {
+        return withExistingParent(item.getId().getPath(), mcLoc("block/cube_all"))
+                .texture("all", modLoc(blockTexturePath));
     }
 }

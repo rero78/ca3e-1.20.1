@@ -1,6 +1,8 @@
 package net.foxtrot.ca3e.item;
 
 import net.foxtrot.ca3e.CataclysmAwaits;
+import net.foxtrot.ca3e.block.ModBlocks;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -36,6 +38,9 @@ public class ModItems {
     public static final RegistryObject<Item> HEAVY_DUTY_MECHANISM = ITEMS.register("heavy_duty_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INCOMPLETE_HEAVY_DUTY_MECHANISM = ITEMS.register("incomplete_heavy_duty_mechanism", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> NETHERITE_SHEET = ITEMS.register("netherite_sheet", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MINING_DOOHICKEY = ITEMS.register("mining_doohickey", () -> new BlockItem(ModBlocks.MINING_DOOHICKEY.get(), new Item.Properties()));
+
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }

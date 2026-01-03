@@ -30,6 +30,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(ModBlocks.DEEPSLATE_BAUXITE_ORE.get(),
                 block -> betterOreDrops(ModBlocks.DEEPSLATE_BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get()));
+
+        dropSelf(ModBlocks.MINING_DOOHICKEY.get());
     }
 
     protected LootTable.Builder oreDrops(Block pBlock, Item item) {

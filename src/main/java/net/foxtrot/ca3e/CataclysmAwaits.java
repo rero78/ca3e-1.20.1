@@ -1,10 +1,12 @@
 package net.foxtrot.ca3e;
 
 import com.mojang.logging.LogUtils;
+import net.foxtrot.ca3e.block.ModBlockEntities;
 import net.foxtrot.ca3e.block.ModBlocks;
 import net.foxtrot.ca3e.entity.ModEntities;
 import net.foxtrot.ca3e.entity.client.MushletRenderer;
 import net.foxtrot.ca3e.item.ModItems;
+import net.foxtrot.ca3e.menu.ModMenus;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -37,6 +39,10 @@ public class CataclysmAwaits
 
         // ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+
+        ModMenus.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -92,6 +98,8 @@ public class CataclysmAwaits
             event.accept(ModItems.RAW_BAUXITE);
             event.accept(ModBlocks.BAUXITE_ORE);
             event.accept(ModBlocks.DEEPSLATE_BAUXITE_ORE);
+
+            event.accept(ModBlocks.MINING_DOOHICKEY);
 
         }
     }

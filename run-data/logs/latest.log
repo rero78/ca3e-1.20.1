@@ -1,46 +1,48 @@
-[01Jan2026 19:36:58.166] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Foxtrot\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.13, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, ca3e, --all, --output, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\generated\resources, --existing, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\main\resources]
-[01Jan2026 19:36:58.171] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[01Jan2026 19:36:58.287] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[01Jan2026 19:36:58.325] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Foxtrot/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[01Jan2026 19:36:58.637] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.13\cf01e2179f72bd2829c65f5226d7dd0cfb6c686\javafmllanguage-1.20.1-47.4.13.jar is missing mods.toml file
-[01Jan2026 19:36:58.639] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.13\e3f96129ea14eba84316f2d69816253e228e6e4c\lowcodelanguage-1.20.1-47.4.13.jar is missing mods.toml file
-[01Jan2026 19:36:58.642] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.13\85796906112d9b621a7b2996f8bfda49da991ef0\mclanguage-1.20.1-47.4.13.jar is missing mods.toml file
-[01Jan2026 19:36:58.645] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.13\f77e3021d1eb31d61f8d1b92d18ed4fb3c2806e5\fmlcore-1.20.1-47.4.13.jar is missing mods.toml file
-[01Jan2026 19:36:58.928] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[01Jan2026 19:37:00.542] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[01Jan2026 19:37:00.555] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Foxtrot\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, ca3e, --all, --output, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\generated\resources, --existing, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\main\resources]
-[01Jan2026 19:37:01.019] [main/INFO] [mixin/]: Remapping refMap mixins.cofhcore.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.020] [main/INFO] [mixin/]: Remapping refMap backend-flywheel.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.021] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.021] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.022] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.025] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
-[01Jan2026 19:37:01.424] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
-[01Jan2026 19:37:01.424] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapAccessor
-[01Jan2026 19:37:01.425] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
-[01Jan2026 19:37:01.425] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapMixin
-[01Jan2026 19:37:01.761] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [ca3e]
-[01Jan2026 19:37:01.766] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[01Jan2026 19:37:05.781] [modloading-worker-0/INFO] [com.simibubi.create.Create/]: Create 6.0.8 initializing! Commit hash: 1a1a9a2819b4f89f78caec41b55ed8cb222fa24b
-[01Jan2026 19:37:05.817] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.13, for MC 1.20.1 with MCP 20230612.114412
-[01Jan2026 19:37:05.818] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.13 Initialized
-[01Jan2026 19:37:06.327] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[01Jan2026 19:37:06.335] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 4.431 ms
-[01Jan2026 19:37:08.618] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Foxtrot/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[01Jan2026 19:37:08.620] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Foxtrot/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[01Jan2026 19:37:08.889] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[01Jan2026 19:37:08.905] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 15 ms
-[01Jan2026 19:37:08.905] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[01Jan2026 19:37:08.923] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 17 ms
-[01Jan2026 19:37:08.923] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: ca3e
-[01Jan2026 19:37:08.933] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: ca3e finished after 9 ms
-[01Jan2026 19:37:08.933] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: ca3e
-[01Jan2026 19:37:08.938] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: ca3e finished after 5 ms
-[01Jan2026 19:37:08.938] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[01Jan2026 19:37:08.947] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 8 ms
-[01Jan2026 19:37:08.947] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id ca3e
-[01Jan2026 19:37:08.953] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id ca3e finished after 6 ms
-[01Jan2026 19:37:08.953] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id ca3e
-[01Jan2026 19:37:08.955] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id ca3e finished after 1 ms
-[01Jan2026 19:37:08.955] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 66 ms
-[01Jan2026 19:37:08.961] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 61, old count: 61, new count: 62, removed stale: 0, written: 1
+[03Jan2026 16:18:10.005] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Foxtrot\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.13, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, ca3e, --all, --output, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\generated\resources, --existing, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\main\resources]
+[03Jan2026 16:18:10.009] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[03Jan2026 16:18:10.136] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[03Jan2026 16:18:10.183] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Foxtrot/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[03Jan2026 16:18:10.672] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.13\cf01e2179f72bd2829c65f5226d7dd0cfb6c686\javafmllanguage-1.20.1-47.4.13.jar is missing mods.toml file
+[03Jan2026 16:18:10.673] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.13\e3f96129ea14eba84316f2d69816253e228e6e4c\lowcodelanguage-1.20.1-47.4.13.jar is missing mods.toml file
+[03Jan2026 16:18:10.676] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.13\85796906112d9b621a7b2996f8bfda49da991ef0\mclanguage-1.20.1-47.4.13.jar is missing mods.toml file
+[03Jan2026 16:18:10.677] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Foxtrot\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.13\f77e3021d1eb31d61f8d1b92d18ed4fb3c2806e5\fmlcore-1.20.1-47.4.13.jar is missing mods.toml file
+[03Jan2026 16:18:11.257] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 3 dependencies adding them to mods collection
+[03Jan2026 16:18:13.790] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[03Jan2026 16:18:13.808] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Foxtrot\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, ca3e, --all, --output, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\generated\resources, --existing, C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1\src\main\resources]
+[03Jan2026 16:18:14.386] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.388] [main/INFO] [mixin/]: Remapping refMap mixins.cofhcore.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.389] [main/INFO] [mixin/]: Remapping refMap backend-flywheel.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.390] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.390] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.391] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.395] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using C:\Users\Foxtrot\Desktop\Cataclysm Awaits 1.20.1 Forge Mod\Cataclysm Awaits-1.20.1/build/createSrgToMcp/output.srg
+[03Jan2026 16:18:14.887] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[03Jan2026 16:18:14.887] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapAccessor
+[03Jan2026 16:18:14.889] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[03Jan2026 16:18:14.889] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapMixin
+[03Jan2026 16:18:15.324] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [ca3e]
+[03Jan2026 16:18:15.334] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[03Jan2026 16:18:21.107] [modloading-worker-0/INFO] [com.simibubi.create.Create/]: Create 6.0.8 initializing! Commit hash: 1a1a9a2819b4f89f78caec41b55ed8cb222fa24b
+[03Jan2026 16:18:21.176] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.13, for MC 1.20.1 with MCP 20230612.114412
+[03Jan2026 16:18:21.178] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.13 Initialized
+[03Jan2026 16:18:21.358] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[03Jan2026 16:18:21.931] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[03Jan2026 16:18:21.949] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 10.19 ms
+[03Jan2026 16:18:24.747] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Foxtrot/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[03Jan2026 16:18:24.750] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Foxtrot/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.13_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[03Jan2026 16:18:25.424] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[03Jan2026 16:18:25.465] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 40 ms
+[03Jan2026 16:18:25.465] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[03Jan2026 16:18:25.500] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 35 ms
+[03Jan2026 16:18:25.500] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: ca3e
+[03Jan2026 16:18:25.511] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: ca3e finished after 10 ms
+[03Jan2026 16:18:25.511] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: ca3e
+[03Jan2026 16:18:25.516] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: ca3e finished after 5 ms
+[03Jan2026 16:18:25.516] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[03Jan2026 16:18:25.526] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 10 ms
+[03Jan2026 16:18:25.526] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id ca3e
+[03Jan2026 16:18:25.538] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id ca3e finished after 11 ms
+[03Jan2026 16:18:25.538] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id ca3e
+[03Jan2026 16:18:25.541] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id ca3e finished after 1 ms
+[03Jan2026 16:18:25.541] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 116 ms
+[03Jan2026 16:18:25.548] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 65, old count: 61, new count: 66, removed stale: 0, written: 6

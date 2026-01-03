@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-31T18:05:42.9648287	Item Models: ca3e
+// 1.20.1	2026-01-03T16:18:25.5435365	Item Models: ca3e
 d179b95410c705415e86da60c1e8d6de2464634d assets/ca3e/models/item/advanced_computation_mechanism.json
 e58225698794084fa5165c100e5d760930b5bc02 assets/ca3e/models/item/aluminum_ingot.json
 478d0b0f0c029f36dff98f29d065c219c54ebbe8 assets/ca3e/models/item/aluminum_sheet.json
@@ -16,6 +16,7 @@ db6caea32f69c1328a404f321221729744105242 assets/ca3e/models/item/incomplete_ster
 13b649108995b391866e1c5bef8ee867e4755528 assets/ca3e/models/item/incomplete_ultra_lightweight_mechanism.json
 9e1da05b1ea73536797032c04ba2a560ae8bda56 assets/ca3e/models/item/industrial_mechanism.json
 4759943648c74666f2b1ff51ca6444d6c043cddf assets/ca3e/models/item/invar_sheet.json
+01decee03d8e72a3016f463a3cd1d05fb11572cc assets/ca3e/models/item/mining_doohickey.json
 beed781c96f48d8b6be0a7feed0ba1b8dbf685bf assets/ca3e/models/item/netherite_sheet.json
 3c604e0763e924d377f3f1cade08c6043e311794 assets/ca3e/models/item/pneumatic_mechanism.json
 6749660752dfae5d210051abdc631f97ff42d223 assets/ca3e/models/item/prepared_andesite_mechanism.json
