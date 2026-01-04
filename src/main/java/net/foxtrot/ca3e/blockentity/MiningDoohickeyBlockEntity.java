@@ -136,6 +136,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
+        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
         if (this.machineState == MachineState.IDLE) {
             return state.setAndContinue(ANIM_IDLE);
         }
@@ -315,8 +316,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 double x = pos.getX() + 0.5;
                 double y = pos.getY() + 1.05;
                 double z = pos.getZ() + 0.5;
-                sl.sendParticles(ParticleTypes.FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
-                sl.sendParticles(ParticleTypes.SMOKE, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
+                sl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
+                sl.sendParticles(ParticleTypes.SOUL, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
             }
         }
 
