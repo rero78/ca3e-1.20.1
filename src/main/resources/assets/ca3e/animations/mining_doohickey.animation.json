@@ -1018,6 +1018,12 @@
 						}
 					}
 				},
+				"Lever": {
+					"rotation": {
+						"vector": [0, 0, 80],
+						"easing": "easeInOutElastic"
+					}
+				},
 				"joint": {
 					"rotation": {
 						"vector": [0, 0, 0],
