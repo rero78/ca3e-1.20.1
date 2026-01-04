@@ -38,7 +38,7 @@ public class CataclysmAwaits
 
         ModBlocks.register(modEventBus);
 
-        // ModSounds.register(modEventBus);
+        ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
