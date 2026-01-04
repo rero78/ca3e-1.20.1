@@ -3,6 +3,7 @@ package net.foxtrot.ca3e;
 import com.mojang.logging.LogUtils;
 import net.foxtrot.ca3e.block.ModBlockEntities;
 import net.foxtrot.ca3e.block.ModBlocks;
+import net.foxtrot.ca3e.drill.DrillRegistryInit;
 import net.foxtrot.ca3e.entity.ModEntities;
 import net.foxtrot.ca3e.entity.client.MushletRenderer;
 import net.foxtrot.ca3e.item.ModItems;
@@ -52,6 +53,7 @@ public class CataclysmAwaits
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(DrillRegistryInit::init);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)

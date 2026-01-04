@@ -1,14 +1,29 @@
 package net.foxtrot.ca3e.blockentity;
 
 import net.foxtrot.ca3e.block.ModBlockEntities;
+import net.foxtrot.ca3e.drill.DrillRegistry;
 import net.foxtrot.ca3e.menu.MiningDoohickeyMenu;
+import net.foxtrot.ca3e.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -16,6 +31,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -29,19 +45,46 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvider, GeoBlockEntity {
 
     public static final int SLOT_FUEL = 0;
-    public static final int SLOT_OUTPUT = 1;
+    public static final int SLOT_DRILL_DISPLAY = 1;
+    public static final int SLOT_OUT_START = 2;
+    public static final int SLOT_OUT_END = 9;
 
-    private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
+    public enum MachineState {
+        IDLE,
+        DRILLING,
+        SUPERCHARGED
+    }
+
+    private static final RawAnimation ANIM_IDLE = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation ANIM_DRILL_START = RawAnimation.begin().thenLoop("drill_start");
+    private static final RawAnimation ANIM_DRILLING = RawAnimation.begin().thenLoop("drilling");
+
+    private static final int START_ANIM_TICKS = 30;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private final ItemStackHandler items = new ItemStackHandler(11);
+    private final ItemStackHandler items = new ItemStackHandler(10) {
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            if (slot == SLOT_FUEL) return isFuel(stack);
+            return false;
+        }
+    };
+
     private final LazyOptional<IItemHandler> itemCap = LazyOptional.of(() -> items);
 
     public int burnTime = 0;
     public int burnTimeTotal = 0;
     public int progress = 0;
     public int progressMax = 100;
+    public int superpowerTicks = 0;
+
+    public boolean running = false;
+
+    private MachineState machineState = MachineState.IDLE;
+    private int startAnimTicks = 0;
+
+    private ItemStack lastDisplay = ItemStack.EMPTY;
 
     private final ContainerData data = new ContainerData() {
         @Override
@@ -51,6 +94,9 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 case 1 -> burnTimeTotal;
                 case 2 -> progress;
                 case 3 -> progressMax;
+                case 4 -> superpowerTicks;
+                case 5 -> machineState.ordinal();
+                case 6 -> startAnimTicks;
                 default -> 0;
             };
         }
@@ -62,17 +108,26 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 case 1 -> burnTimeTotal = value;
                 case 2 -> progress = value;
                 case 3 -> progressMax = value;
+                case 4 -> superpowerTicks = value;
+                case 5 -> {
+                    if (value >= 0 && value < MachineState.values().length) machineState = MachineState.values()[value];
+                }
+                case 6 -> startAnimTicks = value;
             }
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return 7;
         }
     };
 
     public MiningDoohickeyBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MINING_DOOHICKEY.get(), pos, state);
+    }
+
+    public MachineState getMachineState() {
+        return machineState;
     }
 
     @Override
@@ -81,7 +136,13 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
-        return state.setAndContinue(IDLE);
+        if (this.machineState == MachineState.IDLE) {
+            return state.setAndContinue(ANIM_IDLE);
+        }
+        if (this.startAnimTicks > 0) {
+            return state.setAndContinue(ANIM_DRILL_START);
+        }
+        return state.setAndContinue(ANIM_DRILLING);
     }
 
     @Override
@@ -109,10 +170,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable net.minecraft.core.Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return itemCap.cast();
-        }
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) return itemCap.cast();
         return super.getCapability(cap, side);
     }
 
@@ -120,5 +179,206 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     public void invalidateCaps() {
         super.invalidateCaps();
         itemCap.invalidate();
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        load(tag);
+    }
+
+    @Nullable
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        CompoundTag tag = pkt.getTag();
+        if (tag != null) handleUpdateTag(tag);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        tag.put("Items", items.serializeNBT());
+        tag.putInt("BurnTime", burnTime);
+        tag.putInt("BurnTimeTotal", burnTimeTotal);
+        tag.putInt("Progress", progress);
+        tag.putInt("ProgressMax", progressMax);
+        tag.putInt("SuperpowerTicks", superpowerTicks);
+        tag.putInt("MachineState", machineState.ordinal());
+        tag.putInt("StartAnimTicks", startAnimTicks);
+        super.saveAdditional(tag);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        items.deserializeNBT(tag.getCompound("Items"));
+        burnTime = tag.getInt("BurnTime");
+        burnTimeTotal = tag.getInt("BurnTimeTotal");
+        progress = tag.getInt("Progress");
+        progressMax = tag.getInt("ProgressMax");
+        superpowerTicks = tag.getInt("SuperpowerTicks");
+
+        int ms = tag.getInt("MachineState");
+        if (ms >= 0 && ms < MachineState.values().length) machineState = MachineState.values()[ms];
+        else machineState = MachineState.IDLE;
+
+        startAnimTicks = tag.getInt("StartAnimTicks");
+    }
+
+    public static void tick(Level level, BlockPos pos, BlockState state, MiningDoohickeyBlockEntity be) {
+        if (level.isClientSide) return;
+
+        Block belowBlock = level.getBlockState(pos.below()).getBlock();
+        DrillRegistry.DrillRecipe recipe = DrillRegistry.get(belowBlock);
+
+        ItemStack display = ItemStack.EMPTY;
+        if (recipe != null) {
+            Item item = belowBlock.asItem();
+            if (item != Items.AIR) display = new ItemStack(item);
+        }
+
+        if (!ItemStack.matches(display, be.lastDisplay)) {
+            be.lastDisplay = display.copy();
+            be.items.setStackInSlot(SLOT_DRILL_DISPLAY, display.copy());
+            be.setChanged();
+            level.sendBlockUpdated(pos, state, state, 3);
+        }
+
+        if (be.superpowerTicks > 0) be.superpowerTicks--;
+
+        boolean canWork = recipe != null;
+        if (canWork) {
+            be.progressMax = recipe.processingTime();
+        } else {
+            be.progress = 0;
+            be.progressMax = 100;
+        }
+
+        if (be.burnTime > 0) be.burnTime--;
+
+        if (be.burnTime == 0 && canWork) {
+            ItemStack fuel = be.items.getStackInSlot(SLOT_FUEL);
+            if (!fuel.isEmpty() && be.isFuel(fuel)) {
+                int burn = be.getFuelBurnTime(fuel);
+                boolean superFuel = be.isSuperFuel(fuel);
+                fuel.shrink(1);
+                be.burnTime = burn;
+                be.burnTimeTotal = burn;
+                if (superFuel) be.superpowerTicks = Math.max(be.superpowerTicks, 600);
+                be.setChanged();
+                level.sendBlockUpdated(pos, state, state, 3);
+            }
+        }
+
+        boolean powered = be.burnTime > 0;
+        boolean superReqOk = recipe == null || !recipe.requiresSuperpower() || be.superpowerTicks > 0;
+
+        be.running = powered && canWork && superReqOk;
+
+        MachineState prev = be.machineState;
+        MachineState next = MachineState.IDLE;
+        if (be.running) {
+            next = be.superpowerTicks > 0 ? MachineState.SUPERCHARGED : MachineState.DRILLING;
+        }
+
+        if (prev != next) {
+            be.machineState = next;
+
+            if (prev == MachineState.IDLE && (next == MachineState.DRILLING || next == MachineState.SUPERCHARGED)) {
+                be.startAnimTicks = START_ANIM_TICKS;
+                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+            } else if (next == MachineState.IDLE) {
+                be.startAnimTicks = 0;
+            }
+
+            be.setChanged();
+            level.sendBlockUpdated(pos, state, state, 3);
+        }
+
+        if (be.startAnimTicks > 0) be.startAnimTicks--;
+
+        if (!be.running) {
+            be.progress = 0;
+            return;
+        }
+
+        if (be.machineState == MachineState.SUPERCHARGED && level instanceof ServerLevel sl) {
+            if ((level.getGameTime() & 1L) == 0L) {
+                double x = pos.getX() + 0.5;
+                double y = pos.getY() + 1.05;
+                double z = pos.getZ() + 0.5;
+                sl.sendParticles(ParticleTypes.FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
+                sl.sendParticles(ParticleTypes.SMOKE, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
+            }
+        }
+
+        int step = be.machineState == MachineState.SUPERCHARGED ? 2 : 1;
+        be.progress += step;
+
+        while (be.progress >= be.progressMax) {
+            be.progress -= be.progressMax;
+            be.rollOutputs(recipe);
+            be.setChanged();
+            level.sendBlockUpdated(pos, state, state, 3);
+            if (!be.running) break;
+        }
+    }
+
+    private void rollOutputs(DrillRegistry.DrillRecipe recipe) {
+        RandomSource rng = level != null ? level.random : RandomSource.create();
+        for (DrillRegistry.Drop d : recipe.drops()) {
+            if (rng.nextFloat() <= d.chance()) {
+                insertIntoOutputs(d.result().copy());
+            }
+        }
+    }
+
+    private void insertIntoOutputs(ItemStack stack) {
+        for (int i = SLOT_OUT_START; i <= SLOT_OUT_END; i++) {
+            if (stack.isEmpty()) return;
+            ItemStack existing = items.getStackInSlot(i);
+            if (existing.isEmpty()) {
+                items.setStackInSlot(i, stack);
+                return;
+            }
+            if (ItemStack.isSameItemSameTags(existing, stack)) {
+                int max = Math.min(existing.getMaxStackSize(), 64);
+                int space = max - existing.getCount();
+                if (space > 0) {
+                    int move = Math.min(space, stack.getCount());
+                    existing.grow(move);
+                    stack.shrink(move);
+                    items.setStackInSlot(i, existing);
+                }
+            }
+        }
+    }
+
+    private boolean isFuel(ItemStack stack) {
+        return stack.is(Items.COAL) || stack.is(Items.CHARCOAL) || isBlazeCake(stack);
+    }
+
+    private boolean isSuperFuel(ItemStack stack) {
+        return isBlazeCake(stack);
+    }
+
+    private boolean isBlazeCake(ItemStack stack) {
+        Item createCake = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath("create", "blaze_cake"));
+        Item createAdditionCake = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath("createaddition", "blaze_cake"));
+        return (createCake != null && stack.is(createCake)) || (createAdditionCake != null && stack.is(createAdditionCake));
+    }
+
+    private int getFuelBurnTime(ItemStack stack) {
+        if (stack.is(Items.COAL) || stack.is(Items.CHARCOAL)) return 1600;
+        if (isBlazeCake(stack)) return 3200;
+        return 0;
     }
 }

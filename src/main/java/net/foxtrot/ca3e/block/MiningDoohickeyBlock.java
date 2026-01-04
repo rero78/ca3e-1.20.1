@@ -14,6 +14,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
 
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Mirror;
@@ -53,7 +56,7 @@ public class MiningDoohickeyBlock extends Block implements EntityBlock {
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
-
+    @SuppressWarnings("deprecation")
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos,
                                  Player player, InteractionHand hand, BlockHitResult hit) {
@@ -65,6 +68,14 @@ public class MiningDoohickeyBlock extends Block implements EntityBlock {
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return level.isClientSide ? null : (lvl, pos, st, be) -> {
+            if (be instanceof MiningDoohickeyBlockEntity d) MiningDoohickeyBlockEntity.tick(lvl, pos, st, d);
+        };
+    }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
