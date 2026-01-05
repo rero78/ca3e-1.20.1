@@ -1,6 +1,7 @@
 package net.foxtrot.ca3e.client.screen;
 
 import net.foxtrot.ca3e.CataclysmAwaits;
+import net.foxtrot.ca3e.blockentity.MiningDoohickeyBlockEntity;
 import net.foxtrot.ca3e.menu.MiningDoohickeyMenu;
 import net.foxtrot.ca3e.net.ModNetworking;
 import net.foxtrot.ca3e.net.ToggleDoohickeyPacket;
@@ -35,9 +36,19 @@ public class MiningDoohickeyScreen extends AbstractContainerScreen<MiningDoohick
     protected void renderBg(GuiGraphics g, float partialTick, int mouseX, int mouseY) {
         g.blit(TEX, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        int running = menu.getData().get(0);
-        int u = running == 1 ? 18 : 0;
+        boolean running = menu.getData().get(5) != MiningDoohickeyBlockEntity.MachineState.IDLE.ordinal();
+        int u = running ? 18 : 0;
         g.blit(TEX, leftPos + 152, topPos + 6, u, 166, 18, 18);
+
+        if (isLit()) {
+            int lit = getLitProgress();
+            g.blit(TEX, leftPos + 56, topPos + 36 + 12 - lit, 176, 12 - lit, 14, lit + 1);
+        }
+
+        int arrow = getScaledProgress();
+        if (arrow > 0) {
+            g.blit(TEX, leftPos + 79, topPos + 35, 176, 14, arrow + 1, 17);
+        }
     }
 
     @Override
@@ -45,5 +56,23 @@ public class MiningDoohickeyScreen extends AbstractContainerScreen<MiningDoohick
         renderBackground(g);
         super.render(g, mouseX, mouseY, partialTick);
         renderTooltip(g, mouseX, mouseY);
+    }
+
+    private boolean isLit() {
+        return menu.getData().get(0) > 0;
+    }
+
+    private int getLitProgress() {
+        int burn = menu.getData().get(0);
+        int total = menu.getData().get(1);
+        if (total == 0) total = 1600;
+        return burn * 13 / total;
+    }
+
+    private int getScaledProgress() {
+        int progress = menu.getData().get(2);
+        int max = menu.getData().get(3);
+        if (max == 0) return 0;
+        return progress * 24 / max;
     }
 }
