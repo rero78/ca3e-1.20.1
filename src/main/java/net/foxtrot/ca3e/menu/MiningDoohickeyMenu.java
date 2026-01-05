@@ -61,8 +61,8 @@ public class MiningDoohickeyMenu extends AbstractContainerMenu {
         this.be = be;
         this.data = data != null ? data : be.getData();
 
-        addSlot(new DisplaySlot(be.getItems(), 1, 17, 53));
-        addSlot(new FuelSlot(be.getItems(), 0, 55, 53));
+        addSlot(new DisplaySlot(be.getItems(), 1, 18, 54));
+        addSlot(new FuelSlot(be.getItems(), 0, 56, 54));
 
         int idx = 2;
         for (int row = 0; row < 3; row++) {
@@ -115,7 +115,7 @@ public class MiningDoohickeyMenu extends AbstractContainerMenu {
             if (!moveItemStackTo(in, playerInvStart, playerInvEnd, true)) return ItemStack.EMPTY;
         } else {
             if (isAllowedFuel(in)) {
-                if (!moveItemStackTo(in, 0, 1, false)) return ItemStack.EMPTY;
+                if (!moveItemStackTo(in, 1, 2, false)) return ItemStack.EMPTY;
             } else {
                 return ItemStack.EMPTY;
             }

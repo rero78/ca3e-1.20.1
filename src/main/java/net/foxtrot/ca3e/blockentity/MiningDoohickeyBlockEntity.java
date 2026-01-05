@@ -78,6 +78,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     public int progress = 0;
     public int progressMax = 100;
     public int superpowerTicks = 0;
+    private int soundCooldown = 0;
 
     public boolean running = false;
 
@@ -136,6 +137,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
+        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
         if (this.machineState == MachineState.IDLE) {
             return state.setAndContinue(ANIM_IDLE);
         }
@@ -303,6 +305,17 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             level.sendBlockUpdated(pos, state, state, 3);
         }
 
+        if (be.running) {
+            if (be.soundCooldown <= 0) {
+                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                be.soundCooldown = 60;
+            } else {
+                be.soundCooldown--;
+            }
+        } else {
+            be.soundCooldown = 0;
+        }
+
         if (be.startAnimTicks > 0) be.startAnimTicks--;
 
         if (!be.running) {
@@ -315,8 +328,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 double x = pos.getX() + 0.5;
                 double y = pos.getY() + 1.05;
                 double z = pos.getZ() + 0.5;
-                sl.sendParticles(ParticleTypes.FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
-                sl.sendParticles(ParticleTypes.SMOKE, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
+                sl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
+                sl.sendParticles(ParticleTypes.SOUL, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
             }
         }
 

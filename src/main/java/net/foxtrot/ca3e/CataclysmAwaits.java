@@ -8,6 +8,7 @@ import net.foxtrot.ca3e.entity.ModEntities;
 import net.foxtrot.ca3e.entity.client.MushletRenderer;
 import net.foxtrot.ca3e.item.ModItems;
 import net.foxtrot.ca3e.menu.ModMenus;
+import net.foxtrot.ca3e.sound.ModSounds;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -38,7 +39,7 @@ public class CataclysmAwaits
 
         ModBlocks.register(modEventBus);
 
-        // ModSounds.register(modEventBus);
+        ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
