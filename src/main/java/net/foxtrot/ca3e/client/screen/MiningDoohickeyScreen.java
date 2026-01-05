@@ -36,7 +36,9 @@ public class MiningDoohickeyScreen extends AbstractContainerScreen<MiningDoohick
     protected void renderBg(GuiGraphics g, float partialTick, int mouseX, int mouseY) {
         g.blit(TEX, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        boolean running = menu.getData().get(5) != MiningDoohickeyBlockEntity.MachineState.IDLE.ordinal();
+        int stateOrdinal = menu.getData().get(5);
+        boolean running = stateOrdinal == MiningDoohickeyBlockEntity.MachineState.DRILLING.ordinal()
+                || stateOrdinal == MiningDoohickeyBlockEntity.MachineState.SUPERCHARGED.ordinal();
         int u = running ? 18 : 0;
         g.blit(TEX, leftPos + 152, topPos + 6, u, 166, 18, 18);
 
