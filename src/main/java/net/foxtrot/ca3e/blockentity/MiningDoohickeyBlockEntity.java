@@ -78,6 +78,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     public int progress = 0;
     public int progressMax = 100;
     public int superpowerTicks = 0;
+    private int soundCooldown = 0;
 
     public boolean running = false;
 
@@ -302,6 +303,17 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
             be.setChanged();
             level.sendBlockUpdated(pos, state, state, 3);
+        }
+
+        if (be.running) {
+            if (be.soundCooldown <= 0) {
+                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                be.soundCooldown = 60;
+            } else {
+                be.soundCooldown--;
+            }
+        } else {
+            be.soundCooldown = 0;
         }
 
         if (be.startAnimTicks > 0) be.startAnimTicks--;
