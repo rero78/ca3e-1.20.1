@@ -83,6 +83,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
     private MachineState machineState = MachineState.IDLE;
     private int startAnimTicks = 0;
+    private int loopSoundCooldown = 0;
 
     private ItemStack lastDisplay = ItemStack.EMPTY;
 
@@ -296,8 +297,10 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             if (prev == MachineState.IDLE && (next == MachineState.DRILLING || next == MachineState.SUPERCHARGED)) {
                 be.startAnimTicks = START_ANIM_TICKS;
                 level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                be.loopSoundCooldown = 40;
             } else if (next == MachineState.IDLE) {
                 be.startAnimTicks = 0;
+                be.loopSoundCooldown = 0;
             }
 
             be.setChanged();
@@ -307,8 +310,15 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         if (be.startAnimTicks > 0) be.startAnimTicks--;
 
         if (!be.running) {
+            be.loopSoundCooldown = 0;
             be.progress = 0;
             return;
+        }
+
+        if (be.loopSoundCooldown > 0) be.loopSoundCooldown--;
+        if (be.loopSoundCooldown <= 0) {
+            level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+            be.loopSoundCooldown = 40;
         }
 
         if (be.machineState == MachineState.SUPERCHARGED && level instanceof ServerLevel sl) {
