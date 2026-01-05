@@ -52,14 +52,18 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     public enum MachineState {
         IDLE,
         DRILLING,
-        SUPERCHARGED
+        SUPERCHARGED,
+        STOPPING
     }
 
     private static final RawAnimation ANIM_IDLE = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation ANIM_DRILL_START = RawAnimation.begin().thenLoop("drill_start");
+    private static final RawAnimation ANIM_DRILL_START = RawAnimation.begin().thenPlay("drill_start");
+    private static final RawAnimation ANIM_DRILL_STOP = RawAnimation.begin().thenPlay("drill_stop");
     private static final RawAnimation ANIM_DRILLING = RawAnimation.begin().thenLoop("drilling");
 
     private static final int START_ANIM_TICKS = 30;
+    private static final int STOP_ANIM_TICKS = 30;
+    private static final int DRILL_LOOP_INTERVAL = 20;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -84,6 +88,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
     private MachineState machineState = MachineState.IDLE;
     private int startAnimTicks = 0;
+    private int stopAnimTicks = 0;
 
     private ItemStack lastDisplay = ItemStack.EMPTY;
 
@@ -98,6 +103,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 case 4 -> superpowerTicks;
                 case 5 -> machineState.ordinal();
                 case 6 -> startAnimTicks;
+                case 7 -> stopAnimTicks;
                 default -> 0;
             };
         }
@@ -114,12 +120,13 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                     if (value >= 0 && value < MachineState.values().length) machineState = MachineState.values()[value];
                 }
                 case 6 -> startAnimTicks = value;
+                case 7 -> stopAnimTicks = value;
             }
         }
 
         @Override
         public int getCount() {
-            return 7;
+            return 8;
         }
     };
 
@@ -137,7 +144,10 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
-        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
+        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED && this.startAnimTicks == 0 ? 2.0 : 1.0);
+        if (this.machineState == MachineState.STOPPING) {
+            return state.setAndContinue(ANIM_DRILL_STOP);
+        }
         if (this.machineState == MachineState.IDLE) {
             return state.setAndContinue(ANIM_IDLE);
         }
@@ -215,6 +225,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         tag.putInt("SuperpowerTicks", superpowerTicks);
         tag.putInt("MachineState", machineState.ordinal());
         tag.putInt("StartAnimTicks", startAnimTicks);
+        tag.putInt("StopAnimTicks", stopAnimTicks);
         super.saveAdditional(tag);
     }
 
@@ -233,6 +244,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         else machineState = MachineState.IDLE;
 
         startAnimTicks = tag.getInt("StartAnimTicks");
+        stopAnimTicks = tag.getInt("StopAnimTicks");
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MiningDoohickeyBlockEntity be) {
@@ -286,21 +298,41 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         be.running = powered && canWork && superReqOk;
 
         MachineState prev = be.machineState;
-        MachineState next = MachineState.IDLE;
+        MachineState desired = MachineState.IDLE;
         if (be.running) {
-            next = be.superpowerTicks > 0 ? MachineState.SUPERCHARGED : MachineState.DRILLING;
+            desired = be.superpowerTicks > 0 ? MachineState.SUPERCHARGED : MachineState.DRILLING;
         }
 
-        if (prev != next) {
-            be.machineState = next;
-
-            if (prev == MachineState.IDLE && (next == MachineState.DRILLING || next == MachineState.SUPERCHARGED)) {
-                be.startAnimTicks = START_ANIM_TICKS;
-                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
-            } else if (next == MachineState.IDLE) {
-                be.startAnimTicks = 0;
+        boolean stateChanged = false;
+        if (prev == MachineState.STOPPING && desired != MachineState.IDLE) {
+            be.machineState = desired;
+            be.stopAnimTicks = 0;
+            be.startAnimTicks = START_ANIM_TICKS;
+            be.soundCooldown = DRILL_LOOP_INTERVAL;
+            level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+            stateChanged = true;
+        } else if (prev != desired) {
+            if (desired == MachineState.IDLE) {
+                if (prev != MachineState.STOPPING) {
+                    be.machineState = MachineState.STOPPING;
+                    be.stopAnimTicks = STOP_ANIM_TICKS;
+                    be.startAnimTicks = 0;
+                    stateChanged = true;
+                }
+            } else {
+                be.machineState = desired;
+                if (prev == MachineState.IDLE || prev == MachineState.STOPPING) {
+                    be.stopAnimTicks = 0;
+                    be.startAnimTicks = START_ANIM_TICKS;
+                    be.soundCooldown = DRILL_LOOP_INTERVAL;
+                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                } else {
+                    be.startAnimTicks = 0;
+                }
+                stateChanged = true;
             }
-
+        }
+        if (stateChanged) {
             be.setChanged();
             level.sendBlockUpdated(pos, state, state, 3);
         }
@@ -308,7 +340,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         if (be.running) {
             if (be.soundCooldown <= 0) {
                 level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
-                be.soundCooldown = 60;
+                be.soundCooldown = DRILL_LOOP_INTERVAL;
             } else {
                 be.soundCooldown--;
             }
@@ -317,6 +349,14 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         }
 
         if (be.startAnimTicks > 0) be.startAnimTicks--;
+        if (be.stopAnimTicks > 0) {
+            be.stopAnimTicks--;
+            if (be.stopAnimTicks == 0 && be.machineState == MachineState.STOPPING) {
+                be.machineState = MachineState.IDLE;
+                be.setChanged();
+                level.sendBlockUpdated(pos, state, state, 3);
+            }
+        }
 
         if (!be.running) {
             be.progress = 0;
