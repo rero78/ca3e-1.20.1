@@ -61,9 +61,9 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     private static final RawAnimation ANIM_DRILL_STOP = RawAnimation.begin().thenPlay("drill_stop");
     private static final RawAnimation ANIM_DRILLING = RawAnimation.begin().thenLoop("drilling");
 
-    private static final int START_ANIM_TICKS = 30;
+    private static final int START_ANIM_TICKS = 81;
     private static final int STOP_ANIM_TICKS = 30;
-    private static final int DRILL_LOOP_INTERVAL = 20;
+    private static final int DRILL_LOOP_INTERVAL = 80 ;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -88,7 +88,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
     private MachineState machineState = MachineState.IDLE;
     private int startAnimTicks = 0;
-    private int stopAnimTicks = 0;
+    private int stopAnimTicks = 40;
 
     private ItemStack lastDisplay = ItemStack.EMPTY;
 
@@ -286,7 +286,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 fuel.shrink(1);
                 be.burnTime = burn;
                 be.burnTimeTotal = burn;
-                if (superFuel) be.superpowerTicks = Math.max(be.superpowerTicks, 600);
+                if (superFuel) be.superpowerTicks = Math.max(be.superpowerTicks, 2400);
                 be.setChanged();
                 level.sendBlockUpdated(pos, state, state, 3);
             }
@@ -309,7 +309,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             be.stopAnimTicks = 0;
             be.startAnimTicks = START_ANIM_TICKS;
             be.soundCooldown = DRILL_LOOP_INTERVAL;
-            level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, 1.0f);
             stateChanged = true;
         } else if (prev != desired) {
             if (desired == MachineState.IDLE) {
@@ -325,7 +325,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                     be.stopAnimTicks = 0;
                     be.startAnimTicks = START_ANIM_TICKS;
                     be.soundCooldown = DRILL_LOOP_INTERVAL;
-                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, 1.0f);
                 } else {
                     be.startAnimTicks = 0;
                 }
@@ -339,7 +339,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
         if (be.running) {
             if (be.soundCooldown <= 0) {
-                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(null, pos, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, 1.0f);
                 be.soundCooldown = DRILL_LOOP_INTERVAL;
             } else {
                 be.soundCooldown--;
@@ -368,8 +368,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 double x = pos.getX() + 0.5;
                 double y = pos.getY() + 1.05;
                 double z = pos.getZ() + 0.5;
-                sl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.01);
-                sl.sendParticles(ParticleTypes.SOUL, x, y, z, 2, 0.12, 0.08, 0.12, 0.005);
+                sl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 6, 0.18, 0.12, 0.18, 0.02);
             }
         }
 
