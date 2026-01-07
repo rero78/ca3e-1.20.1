@@ -51,7 +51,10 @@ public class DoohickeyLoopSound extends AbstractTickableSoundInstance {
         this.y = be.getBlockPos().getY() + 0.5;
         this.z = be.getBlockPos().getZ() + 0.5;
 
-        if (!be.isRunning()) {
+        MiningDoohickeyBlockEntity.MachineState state = be.getMachineState();
+        boolean drilling = state == MiningDoohickeyBlockEntity.MachineState.DRILLING
+                || state == MiningDoohickeyBlockEntity.MachineState.SUPERCHARGED;
+        if (!drilling) {
             this.stop();
         }
     }
