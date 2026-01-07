@@ -1,14 +1,12 @@
 {
   "mining_doohickey.drill_spinup": {
-    "subtitle": "subtitles.ca3e.mining_doohickey.drill_spinup",
-    "sounds": [ "ca3e:mining_doohickey/drill_spinup" ]
+    "sounds": [
+      { "name": "ca3e:mining_doohickey/drill_spinup", "stream": false }
+    ]
   },
   "mining_doohickey.drill_loop": {
-    "subtitle": "subtitles.ca3e.mining_doohickey.drill_loop",
-    "sounds": [ "ca3e:mining_doohickey/drill_loop" ]
-  },
-  "mining_doohickey.super_loop": {
-    "subtitle": "subtitles.ca3e.mining_doohickey.super_loop",
-    "sounds": [ "ca3e:mining_doohickey/super_loop" ]
+    "sounds": [
+      { "name": "ca3e:mining_doohickey/drill_loop", "stream": false }
+    ]
   }
 }
