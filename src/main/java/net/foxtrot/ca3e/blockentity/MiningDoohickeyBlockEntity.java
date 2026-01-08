@@ -153,7 +153,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
-        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
+        boolean superchargedAnim = this.machineState == MachineState.SUPERCHARGED || (this.startAnimTicks > 0 && this.superpowerTicks > 0);
+        state.getController().setAnimationSpeed(superchargedAnim ? 2.0 : 1.0);
 
         if (this.machineState == MachineState.STOPPING) return state.setAndContinue(ANIM_DRILL_STOP);
         if (this.machineState == MachineState.IDLE) return state.setAndContinue(ANIM_IDLE);
@@ -320,7 +321,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 if (prev == MachineState.IDLE || prev == MachineState.STOPPING) {
                     be.stopAnimTicks = 0;
                     be.startAnimTicks = START_ANIM_TICKS;
-                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, 1.0f);
+                    float pitch = desired == MachineState.SUPERCHARGED ? 2.0f : 1.0f;
+                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, pitch);
                 } else {
                     be.startAnimTicks = 0;
                 }
@@ -334,7 +336,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         }
 
         if (be.startAnimTicks > 0) {
-            int decrement = be.machineState == MachineState.SUPERCHARGED ? 2 : 1;
+            int decrement = be.superpowerTicks > 0 ? 2 : 1;
             be.startAnimTicks = Math.max(0, be.startAnimTicks - decrement);
         }
         if (be.stopAnimTicks > 0) {
@@ -388,7 +390,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             return;
         }
 
-        float pitch = be.getMachineState() == MachineState.SUPERCHARGED ? 1.35f : 1.0f;
+        float pitch = be.getMachineState() == MachineState.SUPERCHARGED ? 2.0f : 1.0f;
 
         if (be.drillLoop == null) {
             be.drillLoop = new DoohickeyLoopSound(be, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, pitch);
