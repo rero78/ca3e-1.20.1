@@ -153,7 +153,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
-        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED && this.startAnimTicks == 0 ? 2.0 : 1.0);
+        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
 
         if (this.machineState == MachineState.STOPPING) return state.setAndContinue(ANIM_DRILL_STOP);
         if (this.machineState == MachineState.IDLE) return state.setAndContinue(ANIM_IDLE);
@@ -333,7 +333,10 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             level.sendBlockUpdated(pos, state, state, 3);
         }
 
-        if (be.startAnimTicks > 0) be.startAnimTicks--;
+        if (be.startAnimTicks > 0) {
+            int decrement = be.machineState == MachineState.SUPERCHARGED ? 2 : 1;
+            be.startAnimTicks = Math.max(0, be.startAnimTicks - decrement);
+        }
         if (be.stopAnimTicks > 0) {
             be.stopAnimTicks--;
             if (be.stopAnimTicks == 0 && be.machineState == MachineState.STOPPING) {
@@ -374,7 +377,9 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.level != level) return;
 
-        boolean shouldLoop = be.isRunning();
+        boolean drillingState = be.getMachineState() == MachineState.DRILLING
+                || be.getMachineState() == MachineState.SUPERCHARGED;
+        boolean shouldLoop = drillingState && be.startAnimTicks == 0;
         if (!shouldLoop) {
             if (be.drillLoop != null) {
                 be.drillLoop.end();
