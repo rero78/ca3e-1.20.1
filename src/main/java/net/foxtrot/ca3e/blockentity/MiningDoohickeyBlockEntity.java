@@ -374,9 +374,8 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.level != level) return;
 
-        boolean drillingState = be.getMachineState() == MachineState.DRILLING
+        boolean shouldLoop = be.getMachineState() == MachineState.DRILLING
                 || be.getMachineState() == MachineState.SUPERCHARGED;
-        boolean shouldLoop = drillingState && be.startAnimTicks == 0;
         if (!shouldLoop) {
             if (be.drillLoop != null) {
                 be.drillLoop.end();
