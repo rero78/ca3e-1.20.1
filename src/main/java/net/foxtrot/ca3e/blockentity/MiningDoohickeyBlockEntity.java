@@ -333,7 +333,10 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             level.sendBlockUpdated(pos, state, state, 3);
         }
 
-        if (be.startAnimTicks > 0) be.startAnimTicks--;
+        if (be.startAnimTicks > 0) {
+            int decrement = be.machineState == MachineState.SUPERCHARGED ? 2 : 1;
+            be.startAnimTicks = Math.max(0, be.startAnimTicks - decrement);
+        }
         if (be.stopAnimTicks > 0) {
             be.stopAnimTicks--;
             if (be.stopAnimTicks == 0 && be.machineState == MachineState.STOPPING) {
@@ -374,8 +377,9 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.level != level) return;
 
-        boolean shouldLoop = be.getMachineState() == MachineState.DRILLING
+        boolean drillingState = be.getMachineState() == MachineState.DRILLING
                 || be.getMachineState() == MachineState.SUPERCHARGED;
+        boolean shouldLoop = drillingState && be.startAnimTicks == 0;
         if (!shouldLoop) {
             if (be.drillLoop != null) {
                 be.drillLoop.end();
