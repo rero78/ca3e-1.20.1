@@ -67,6 +67,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
 
     private static final int START_ANIM_TICKS = 40;
     private static final int STOP_ANIM_TICKS = 30;
+    private static final float SUPERCHARGED_SPEED_MULTIPLIER = 2.0f;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -153,7 +154,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private PlayState predicate(AnimationState<MiningDoohickeyBlockEntity> state) {
-        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? 2.0 : 1.0);
+        state.getController().setAnimationSpeed(this.machineState == MachineState.SUPERCHARGED ? SUPERCHARGED_SPEED_MULTIPLIER : 1.0);
 
         if (this.machineState == MachineState.STOPPING) return state.setAndContinue(ANIM_DRILL_STOP);
         if (this.machineState == MachineState.IDLE) return state.setAndContinue(ANIM_IDLE);
@@ -319,8 +320,12 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
                 be.machineState = desired;
                 if (prev == MachineState.IDLE || prev == MachineState.STOPPING) {
                     be.stopAnimTicks = 0;
-                    be.startAnimTicks = START_ANIM_TICKS;
-                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, 1.0f);
+                    int startDuration = desired == MachineState.SUPERCHARGED
+                            ? Math.max(1, START_ANIM_TICKS / 2)
+                            : START_ANIM_TICKS;
+                    be.startAnimTicks = startDuration;
+                    float pitch = desired == MachineState.SUPERCHARGED ? SUPERCHARGED_SPEED_MULTIPLIER : 1.0f;
+                    level.playSound(null, pos, ModSounds.DRILL_SPINUP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 0.25f, pitch);
                 } else {
                     be.startAnimTicks = 0;
                 }
@@ -334,8 +339,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
         }
 
         if (be.startAnimTicks > 0) {
-            int decrement = be.machineState == MachineState.SUPERCHARGED ? 2 : 1;
-            be.startAnimTicks = Math.max(0, be.startAnimTicks - decrement);
+            be.startAnimTicks = Math.max(0, be.startAnimTicks - 1);
         }
         if (be.stopAnimTicks > 0) {
             be.stopAnimTicks--;
@@ -388,7 +392,7 @@ public class MiningDoohickeyBlockEntity extends BlockEntity implements MenuProvi
             return;
         }
 
-        float pitch = be.getMachineState() == MachineState.SUPERCHARGED ? 1.35f : 1.0f;
+        float pitch = be.getMachineState() == MachineState.SUPERCHARGED ? SUPERCHARGED_SPEED_MULTIPLIER : 1.0f;
 
         if (be.drillLoop == null) {
             be.drillLoop = new DoohickeyLoopSound(be, ModSounds.DRILL_LOOP.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, pitch);
